@@ -1,7 +1,7 @@
 import {View, Text, StyleSheet} from "react-native";
 
 const GameScreen = ({route, navigation}) => {
-    const {categoryId} = route.params;
+    const {chosenQuestions} = route.params;
 
     // const progressBarValue = (millisecondsLeft / 1000 / time) * 100;
     // const progressBarColor =
@@ -13,7 +13,7 @@ const GameScreen = ({route, navigation}) => {
 
     // const secondsLeft = Math.ceil(millisecondsLeft / 1000);
 
-    return <View style={styles.screen}><Text>{categoryId}</Text></View>;
+    return <View style={styles.screen}>{chosenQuestions.map(x => <Text key={x.id}>{x.text}</Text>)}</View>;
 };
 
 const styles = StyleSheet.create({

@@ -36,7 +36,7 @@ const CategoriesScreen = ({navigation}) => {
     return (
         <View style={styles.screen}>
             <FlatList
-                key="test"
+                key="categories"
                 data={categories}
                 keyExtractor={(item) => item.id}
                 numColumns={2}

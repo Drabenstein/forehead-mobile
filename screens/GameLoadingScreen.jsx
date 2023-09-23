@@ -5,10 +5,10 @@ import { StackActions, useIsFocused } from "@react-navigation/native";
 import * as ScreenOrientation from "expo-screen-orientation";
 
 const GameLoadingScreen = ({ route, navigation }) => {
-  const { categoryId } = route.params;
+  const { chosenQuestions } = route.params;
 
   const onElapsed = () => {
-    navigation.dispatch(StackActions.replace("Game", { categoryId }));
+    navigation.dispatch(StackActions.replace("Game", { chosenQuestions }));
   };
 
   const millisecondsLeft = useCountdown(5, onElapsed);

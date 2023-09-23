@@ -8,7 +8,9 @@ const useGameStore = create(set => ({
     questionHistory: {},
     addQuestionsToHistory: (categoryId, questions) => set(state => {
         const questionHistory = state.questionHistory;
-        questionHistory[categoryId] = [...questions, ...questionHistory[categoryId] || []].slice(0, 50);
+        const questionsInHistory = questionHistory[categoryId] || [];
+        questionsInHistory.unshift(...questions)
+        questionHistory[categoryId] = questionsInHistory.slice(0, 50);
         return {questionHistory};
     })
 }));

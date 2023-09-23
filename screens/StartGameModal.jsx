@@ -15,16 +15,13 @@ const randomizeQuestionsWithNoRepeatsFromAtMaxLastFiveGames = (questionsMap, que
     const historyLimit = Math.min(Math.ceil((questionsMap[categoryId]?.length ?? 0) * 0.25), 50);
     const lastGamesQuestions = questionHistory[categoryId]?.slice(0, historyLimit) ?? [];
     const randomQuestions = [];
-    console.log(questionsMap[categoryId].length);
     const questions = questionsMap[categoryId].filter(x => !lastGamesQuestions.includes(x));
-    console.log(questions.length);
     while (randomQuestions.length < 10) {
         const randomIndex = Math.floor(Math.random() * questions.length);
         const randomQuestion = questions[randomIndex];
         randomQuestions.push(randomQuestion);
         delete questions[randomIndex];
     }
-    console.log(randomQuestions);
     return randomQuestions;
 };
 
@@ -39,7 +36,7 @@ const StartGameModal = ({route, navigation}) => {
     useEffect(() => {
         const randomQuestions = randomizeQuestionsWithNoRepeatsFromAtMaxLastFiveGames(questionsMap, questionHistory, category.id);
         setChosenQuestions(randomQuestions);
-    }, [category]);
+    }, [isFocused]);
 
     useEffect(() => {
         if (isFocused) {
@@ -52,9 +49,11 @@ const StartGameModal = ({route, navigation}) => {
     };
 
     const onStartPress = () => {
-        addQuestionsToHistory(chosenQuestions);
-        navigation.navigate("GameLoading", {chosenQuestions});
-        // navigation.dispatch(StackActions.replace("GameLoading", { categoryId }));
+        if (chosenQuestions?.length > 0) {
+            addQuestionsToHistory(category.id, chosenQuestions);
+            navigation.navigate("GameLoading", {chosenQuestions});
+            // navigation.dispatch(StackActions.replace("GameLoading", { categoryId }));
+        }
     };
 
     return (
