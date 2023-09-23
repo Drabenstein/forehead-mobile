@@ -4,6 +4,7 @@
     "slug": "forehead-mobile",
     "version": "1.0.0",
     "orientation": "landscape",
+    "backgroundColor": "#4ab7ff",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {

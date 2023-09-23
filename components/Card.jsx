@@ -12,7 +12,7 @@ const Card = ({ id, title, imageUrl, onPress, doubleHorizontalMargin }) => {
     <View style={outerContainerStyle}>
       <Pressable onPress={onPress} style={styles.pressable} android_ripple={{ color: '#ccc' }}>
         <View style={styles.innerContainer}>
-          <Animated.Image source={{ uri: imageUrl }} style={styles.image} resizeMode="center" resizeMethod="scale" sharedTransitionTag={id} />
+          <Animated.Image source={{ uri: imageUrl }} style={styles.image} resizeMode="contain" resizeMethod="resize" sharedTransitionTag={id} />
           <Text>{title}</Text>
         </View>
       </Pressable>
