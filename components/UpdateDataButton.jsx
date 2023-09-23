@@ -3,7 +3,7 @@ import React, {useCallback} from "react";
 import CustomButton from "./CustomButton";
 
 const UpdateDataButton = () => {
-    const {isFetching, refetch} = queries.useGetCategories();
+    const {isFetching, refetch} = queries.useGetCategoriesWithQuestions();
 
     const onPress = useCallback(() => {
         refetch();

@@ -4,17 +4,7 @@ export const fetchCategories = () => {
     });
 
 
-    return new Promise(resolve => setTimeout(() => fetch(`https://api.czolko.mdrabek.net/api/categories`, {
+    return new Promise(resolve => setTimeout(() => fetch(`https://api.czolko.mdrabek.net/api/categories?full=true`, {
         headers
     }).then(res => resolve(res.json())), 3000));
-};
-
-export const fetchQuestionsForCategory = (categoryId) => {
-    const headers = new Headers({
-        "X-API-Key": 'aaa'
-    });
-
-    return fetch(`https://api.czolko.mdrabek.net/api/categories/${categoryId}/questions`, {
-        headers
-    }).then(res => res.json());
 };

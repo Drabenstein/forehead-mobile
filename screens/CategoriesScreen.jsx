@@ -8,9 +8,11 @@ import {
 import Card from "../components/Card";
 import {useIsFocused} from "@react-navigation/native";
 import {queries} from "../services/queries";
+import useGameStore from "../store/useGameStore";
 
 const CategoriesScreen = ({navigation}) => {
-    const {data: categories, isFetching} = queries.useGetCategories();
+    const categories = useGameStore(state => state.categories);
+    const {isFetching} = queries.useGetCategoriesWithQuestions();
     const isFocused = useIsFocused();
 
     useEffect(() => {

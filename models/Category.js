@@ -1,4 +1,4 @@
-class Category {
+export class Category {
   id;
   name;
   imageUrl;

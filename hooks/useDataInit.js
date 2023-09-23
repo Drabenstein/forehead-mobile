@@ -1,8 +1,8 @@
 import React, {useEffect} from "react";
-import useCategoriesStore from "../store/useCategoriesStore";
+import useGameStore from "../store/useGameStore";
 
 const useDataInit = () => {
-    const { categories, setCategories, questions, addQuestions  } = useCategoriesStore(state => state);
+    const { categories, setCategories, questions, addQuestions  } = useGameStore(state => state);
     const [isLoading, setIsLoading] = React.useState(true);
 
     useEffect(() => {

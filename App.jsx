@@ -5,15 +5,31 @@ import CategoriesScreen from "./screens/CategoriesScreen";
 import GameLoadingScreen from "./screens/GameLoadingScreen";
 import StartGameModal from "./screens/StartGameModal";
 import GameScreen from "./screens/GameScreen";
-import React from "react";
+import React, {useEffect} from "react";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import UpdateDataButton from "./components/UpdateDataButton";
+import useGameStore from "./store/useGameStore";
+import {getCategories, getQuestionMap} from "./store/storage";
 
 const Stack = createNativeStackNavigator();
 
 const queryClient = new QueryClient()
 
 export default function App() {
+    const setCategories = useGameStore(state => state.setCategories);
+    const setQuestionsMap = useGameStore(state => state.setQuestionsMap);
+
+    useEffect(() => {
+        const initialize = async () => {
+            const categories = await getCategories();
+            const questionMap = await getQuestionMap(categories.map(x => x.id));
+            setCategories(categories);
+            setQuestionsMap(questionMap);
+        };
+
+        initialize();
+    }, []);
+
     return (
         <SafeAreaView style={{flex: 1}}>
             <QueryClientProvider client={queryClient}>

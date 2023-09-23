@@ -1,15 +1,13 @@
-class Question {
+export class Question {
   id;
   text;
   helperText;
   authorName;
-  categoryId;
 
-  constructor(id, text, helperText, authorName, categoryId) {
+  constructor(id, text, helperText, authorName) {
     this.id = id;
     this.text = text;
     this.helperText = helperText;
     this.authorName = authorName;
-    this.categoryId = categoryId;
   }
 }
