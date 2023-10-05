@@ -10,20 +10,7 @@ import {useIsFocused} from "@react-navigation/native";
 import {useEffect, useState} from "react";
 import * as ScreenOrientation from "expo-screen-orientation";
 import useGameStore from "../store/useGameStore";
-
-const randomizeQuestionsWithNoRepeatsFromAtMaxLastFiveGames = (questionsMap, questionHistory, categoryId) => {
-    const historyLimit = Math.min(Math.ceil((questionsMap[categoryId]?.length ?? 0) * 0.25), 50);
-    const lastGamesQuestions = questionHistory[categoryId]?.slice(0, historyLimit) ?? [];
-    const randomQuestions = [];
-    const questions = questionsMap[categoryId].filter(x => !lastGamesQuestions.includes(x));
-    while (randomQuestions.length < 10) {
-        const randomIndex = Math.floor(Math.random() * questions.length);
-        const randomQuestion = questions[randomIndex];
-        randomQuestions.push(randomQuestion);
-        delete questions[randomIndex];
-    }
-    return randomQuestions;
-};
+import {randomizeQuestionsWithNoRepeatsFromAtMaxLastFiveGames} from "../core/randomizeQuestions";
 
 const StartGameModal = ({route, navigation}) => {
     const {category} = route.params;

@@ -1,13 +1,13 @@
 import { MutableRefObject, useEffect, useRef, useState } from "react";
 
-const useCountdown = (seconds: number, onElapsed: () => void) => {
+const useCountdown = (seconds, onElapsed) => {
   const currentDate = new Date();
   const [desiredDate] = useState(
     new Date(currentDate.getTime() + seconds * 1000)
   );
   const [countDown, setCountDown] = useState(seconds * 1000);
 
-  const intervalRef: MutableRefObject<NodeJS.Timer | undefined> = useRef();
+  const intervalRef = useRef(null);
 
   const countdownWork = () => {
     const now = new Date();

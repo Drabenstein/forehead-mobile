@@ -62,7 +62,7 @@ export default CategoriesScreen;
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
-        paddingVertical: 10,
+        paddingVertical: 10
     },
     loadingScreen: {
         flex: 1,
