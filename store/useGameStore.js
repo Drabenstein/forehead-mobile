@@ -7,14 +7,18 @@ const useGameStore = create((set) => ({
   setQuestionsMap: (questionsMap) => set({ questionsMap }),
   gameAnswers: [],
   markAsCorrectAnswer(question) {
-    const gameAnswers = this.gameAnswers || [];
-    gameAnswers.push({ question: question, answer: "correct" });
-    set({ gameAnswers });
+    set((state) => {
+      const gameAnswers = state.gameAnswers || [];
+      gameAnswers.push({ question: question, answer: "correct" });
+      return { gameAnswers };
+    });
   },
   markAsWrongAnswer(question) {
-    const gameAnswers = this.gameAnswers || [];
-    gameAnswers.push({ question: question, answer: "wrong" });
-    set({ gameAnswers });
+    set((state) => {
+      const gameAnswers = state.gameAnswers || [];
+      gameAnswers.push({ question: question, answer: "wrong" });
+      return { gameAnswers };
+    });
   },
   questionHistory: {},
   addQuestionsToHistory: (categoryId, questions) =>
@@ -22,9 +26,10 @@ const useGameStore = create((set) => ({
       const questionHistory = state.questionHistory;
       const questionsInHistory = questionHistory[categoryId] || [];
       questionsInHistory.unshift(...questions);
-      questionHistory[categoryId] = questionsInHistory.slice(0, 50);
+      questionHistory[categoryId] = questionsInHistory.slice(0, 100);
       return { questionHistory };
     }),
+  restartGame: () => set({ gameAnswers: [] }),
 }));
 
 export default useGameStore;

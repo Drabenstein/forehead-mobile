@@ -14,7 +14,6 @@ const QuestionView = ({
 }) => {
   const millisecondsLeft = useCountdown(timeSeconds, onTimeElapsed);
   const longPressGesture = Gesture.LongPress().onStart((e) => {
-    console.log("long press ended", e.x, e.y, e.absoluteX, e.absoluteY);
     if (e.absoluteX > width / 2) {
       runOnJS(onCorrectAnswer)();
     } else {
@@ -63,6 +62,9 @@ const styles = StyleSheet.create({
     marginBottom: "auto",
     marginHorizontal: 12,
     color: "#fff",
+    textShadowColor: "#000",
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 1,
   },
   lowerStatusContainer: {
     marginBottom: 12,

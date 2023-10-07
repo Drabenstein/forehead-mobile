@@ -12,12 +12,15 @@ import useGameStore from "./store/useGameStore";
 import { getCategories, getQuestionMap } from "./store/storage";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import SummaryScreen from "./screens/SummaryScreen";
+import { prepareSounds, unloadSounds } from "./core/sounds";
+import { useKeepAwake } from "expo-keep-awake";
 
 const Stack = createNativeStackNavigator();
 
 const queryClient = new QueryClient();
 
 export default function App() {
+  useKeepAwake();
   const setCategories = useGameStore((state) => state.setCategories);
   const setQuestionsMap = useGameStore((state) => state.setQuestionsMap);
 
@@ -30,6 +33,9 @@ export default function App() {
     };
 
     initialize();
+    prepareSounds();
+
+    return () => unloadSounds();
   }, []);
 
   return (

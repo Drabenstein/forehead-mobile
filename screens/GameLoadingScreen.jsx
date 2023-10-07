@@ -3,8 +3,10 @@ import { View, Text, StyleSheet } from "react-native";
 import { useCountdown } from "../hooks/useCountdown";
 import { StackActions, useIsFocused } from "@react-navigation/native";
 import * as ScreenOrientation from "expo-screen-orientation";
+import useGameStore from "../store/useGameStore";
 
 const GameLoadingScreen = ({ route, navigation }) => {
+  const restartGame = useGameStore((state) => state.restartGame);
   const { chosenQuestions } = route.params;
 
   const onElapsed = () => {
@@ -13,6 +15,10 @@ const GameLoadingScreen = ({ route, navigation }) => {
 
   const millisecondsLeft = useCountdown(5, onElapsed);
   const isFocused = useIsFocused();
+
+  useEffect(() => {
+    restartGame();
+  }, []);
 
   useEffect(() => {
     if (isFocused) {
