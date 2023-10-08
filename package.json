@@ -17,6 +17,8 @@
     "@types/react": "~18.0.27",
     "expo": "~48.0.18",
     "expo-av": "~13.2.1",
+    "expo-insights": "^0.4.0",
+    "expo-keep-awake": "~12.0.1",
     "expo-screen-orientation": "~5.1.1",
     "expo-status-bar": "~1.4.4",
     "react": "18.2.0",
@@ -27,7 +29,7 @@
     "react-native-screens": "~3.20.0",
     "typescript": "^4.9.4",
     "zustand": "^4.4.1",
-    "expo-keep-awake": "~12.0.1"
+    "expo-updates": "~0.16.4"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

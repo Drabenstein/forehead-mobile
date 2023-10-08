@@ -3,6 +3,10 @@ const randomizeQuestionsWithNoRepeatsFromHistory = (
   questionHistory,
   categoryId,
 ) => {
+  if (questionsMap[categoryId]?.length < 10) {
+    return [];
+  }
+
   const historyLimit = Math.min(
     Math.ceil((questionsMap[categoryId]?.length ?? 0) * 0.4),
     200,

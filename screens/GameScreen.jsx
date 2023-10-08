@@ -67,7 +67,6 @@ const GameScreen = ({ route, navigation }) => {
 
   const moveToNextQuestionOrSummary = useCallback(
     (currentIndex) => {
-      console.log("received", currentIndex);
       if (currentIndex >= chosenQuestions.length - 1) {
         navigation.dispatch(StackActions.replace("Summary"));
         return;
@@ -77,11 +76,7 @@ const GameScreen = ({ route, navigation }) => {
     },
     [chosenQuestions, navigation, setCurrentQuestionIndex],
   );
-  console.log(
-    "GameScreen",
-    currentQuestionIndex,
-    chosenQuestions[currentQuestionIndex],
-  );
+
   const onCorrectAnswer = useCallback(() => {
     markAsCorrectAnswer(currentQuestion);
     setAnswerState("correct");
@@ -120,7 +115,7 @@ const GameScreen = ({ route, navigation }) => {
       {answerState === "none" && currentQuestion && (
         <QuestionView
           question={currentQuestion}
-          timeSeconds={20}
+          timeSeconds={60}
           onCorrectAnswer={onCorrectAnswer}
           onPass={onWrongAnswer}
           onTimeElapsed={onTimeElapsed}

@@ -15,7 +15,7 @@ const StartGameModal = ({ route, navigation }) => {
   const addQuestionsToHistory = useGameStore(
     (state) => state.addQuestionsToHistory,
   );
-  const [chosenQuestions, setChosenQuestions] = useState([]);
+  const [chosenQuestions, setChosenQuestions] = useState(null);
 
   useEffect(() => {
     const randomQuestions = randomizeQuestionsWithNoRepeatsFromHistory(
@@ -53,19 +53,24 @@ const StartGameModal = ({ route, navigation }) => {
           resizeMethod="resize"
           sharedTransitionTag={category.id}
         />
-        <Text style={styles.categoryTitle}>{category.name}</Text>
+        <View>
+          <Text style={styles.categoryTitle}>{category.name}</Text>
+          <Text style={styles.additionalText}>
+            Liczba pytań w bazie: {questionsMap[category.id]?.length ?? 0}
+          </Text>
+        </View>
       </View>
       <View style={styles.button}>
         <CustomButton
-          title="Start"
+          title="Rozpocznij grę"
           color="green"
           onPress={onStartPress}
-          loading={chosenQuestions?.length === 0}
+          loading={chosenQuestions === null}
           disabled={chosenQuestions?.length === 0}
         />
       </View>
       <View style={styles.button}>
-        <CustomButton title="Back" color="red" onPress={onBackPress} />
+        <CustomButton title="Powrót" color="red" onPress={onBackPress} />
       </View>
     </View>
   );
@@ -102,6 +107,13 @@ const styles = StyleSheet.create({
     fontSize: 42,
     fontWeight: "bold",
     textAlign: "center",
+  },
+  additionalText: {
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
+    color: "rgba(0,0,0,0.5)",
+    marginTop: 12,
   },
   button: {
     marginVertical: 5,

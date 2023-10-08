@@ -1,14 +1,15 @@
 {
   "expo": {
-    "name": "forehead-mobile",
+    "name": "Czółko by MD",
     "slug": "forehead-mobile",
     "version": "1.0.0",
     "orientation": "landscape",
     "backgroundColor": "#4ab7ff",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "githubUrl": "https://github.com/Drabenstein/forehead-mobile",
     "splash": {
-      "image": "./assets/splash.jpg",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -22,7 +23,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "net.mdrabek.foreheadmobile"
     },
     "androidStatusBar": {
       "hidden": true,
@@ -40,6 +42,12 @@
         "projectId": "657c2339-7bb9-4316-b27c-15baf0906fa7"
       }
     },
-    "owner": "drabenstein"
+    "owner": "drabenstein",
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/657c2339-7bb9-4316-b27c-15baf0906fa7"
+    }
   }
 }

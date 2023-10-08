@@ -2,6 +2,7 @@ import { Text, View, StyleSheet, Dimensions } from "react-native";
 import { useCountdown } from "../../hooks/useCountdown";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import { runOnJS } from "react-native-reanimated";
+import { useRef } from "react";
 
 const width = Dimensions.get("window").width;
 
@@ -12,8 +13,14 @@ const QuestionView = ({
   onCorrectAnswer,
   onPass,
 }) => {
+  const hasAlreadyReacted = useRef(false);
   const millisecondsLeft = useCountdown(timeSeconds, onTimeElapsed);
   const longPressGesture = Gesture.LongPress().onStart((e) => {
+    if (hasAlreadyReacted.current) {
+      return;
+    }
+
+    hasAlreadyReacted.current = true;
     if (e.absoluteX > width / 2) {
       runOnJS(onCorrectAnswer)();
     } else {
@@ -78,5 +85,8 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: "bold",
     color: "#fff",
+    textShadowColor: "#000",
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 1,
   },
 });
