@@ -51,7 +51,7 @@ const StartGameModal = ({ route, navigation }) => {
           style={styles.image}
           resizeMode="contain"
           resizeMethod="resize"
-          sharedTransitionTag={category.id}
+          sharedTransitionTag={category.id.toString()}
         />
         <View>
           <Text style={styles.categoryTitle}>{category.name}</Text>

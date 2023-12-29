@@ -3,7 +3,7 @@
     "name": "Czółko by MD",
     "slug": "forehead-mobile",
     "version": "1.0.0",
-    "orientation": "landscape",
+    "orientation": "portrait",
     "backgroundColor": "#4ab7ff",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",

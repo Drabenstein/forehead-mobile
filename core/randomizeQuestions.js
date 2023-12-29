@@ -7,10 +7,7 @@ const randomizeQuestionsWithNoRepeatsFromHistory = (
     return [];
   }
 
-  const historyLimit = Math.min(
-    Math.ceil((questionsMap[categoryId]?.length ?? 0) * 0.4),
-    200,
-  );
+  const historyLimit = questionHistory[categoryId]?.length - 20 ?? 0;
   const lastGamesQuestions =
     questionHistory[categoryId]?.slice(0, historyLimit) ?? [];
   const randomQuestions = [];

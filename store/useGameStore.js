@@ -26,7 +26,7 @@ const useGameStore = create((set) => ({
       const questionHistory = state.questionHistory;
       const questionsInHistory = questionHistory[categoryId] || [];
       questionsInHistory.unshift(...questions);
-      questionHistory[categoryId] = questionsInHistory.slice(0, 100);
+      questionHistory[categoryId] = questionsInHistory.slice(0, 500);
       return { questionHistory };
     }),
   restartGame: () => set({ gameAnswers: [] }),

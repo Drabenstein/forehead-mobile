@@ -27,12 +27,11 @@ const QuestionView = ({
       runOnJS(onPass)();
     }
   });
-  longPressGesture.config.minDurationMs = 800;
+  longPressGesture.config.minDurationMs = 600;
 
-  const minutesLeft = Math.floor(millisecondsLeft / 60000);
-  const secondsLeft = Math.ceil(
-    (millisecondsLeft - minutesLeft * 60000) / 1000,
-  );
+  const secondsRemaining = Math.ceil(millisecondsLeft / 1000);
+  const minutesLeft = Math.floor(secondsRemaining / 60);
+  const secondsLeft = secondsRemaining - minutesLeft * 60;
 
   return (
     <GestureDetector gesture={longPressGesture}>

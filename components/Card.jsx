@@ -20,7 +20,7 @@ const Card = ({ id, title, imageUrl, onPress, doubleHorizontalMargin }) => {
             style={styles.image}
             resizeMode="contain"
             resizeMethod="resize"
-            sharedTransitionTag={id}
+            sharedTransitionTag={id.toString()}
           />
           <Text>{title}</Text>
         </View>

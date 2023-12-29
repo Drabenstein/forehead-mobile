@@ -8,7 +8,7 @@ const prepareSounds = async () => {
   try {
     const [{ sound: correct }, { sound: timeElapsed }, { sound: pass }] =
       await Promise.all([
-        Audio.Sound.createAsync(require("../assets/correct.mp3")),
+        Audio.Sound.createAsync(require("../assets/correct-1.mp3")),
         Audio.Sound.createAsync(require("../assets/time-elapsed.mp3")),
         Audio.Sound.createAsync(require("../assets/pass.mp3")),
       ]);
